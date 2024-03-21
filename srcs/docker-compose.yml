@@ -1,4 +1,8 @@
 services:
   nginx:
+    container_name: nginx
     build: ./requirements/nginx
-    image: rmatsuok_nginx:0.1
+    volumes:
+      - ./requirements/logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
