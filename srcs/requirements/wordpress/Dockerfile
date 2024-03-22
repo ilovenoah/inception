@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     wget \
     unzip \
+	curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "deb [signed-by=/etc/apt/keyrings/sury-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list
