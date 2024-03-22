@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /etc/apt/keyrings
 RUN echo "deb [signed-by=/etc/apt/keyrings/sury-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list
 
 RUN curl -fsSL https://packages.sury.org/php/apt.gpg | gpg --dearmor -o /etc/apt/keyrings/sury-php.gpg
