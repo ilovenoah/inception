@@ -36,7 +36,7 @@ RUN wget https://wordpress.org/wordpress-6.4.3.zip && \
     chown -R www-data:www-data /var/www/html/wordpress
 
 COPY wp-config.php /var/www/html/wordpress/wp-config.php
-COPY entrypoint.sh /entrypoinst.sh
+COPY entrypoint.sh /entrypoint.sh
 
 RUN sed -i 's/listen = \/run\/php\/php8.3-fpm.sock/listen = 9000/' /etc/php/8.3/fpm/pool.d/www.conf
 
