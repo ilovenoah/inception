@@ -5,4 +5,13 @@ services:
     volumes:
       - ./requirements/logs/nginx:/var/log/nginx
     ports:
-      - "80:80"
+      - ":80"
+
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    # volumes:
+    #   - ./requirements/wordpress:/var/www/html
+    ports:
+      - ":9090"
