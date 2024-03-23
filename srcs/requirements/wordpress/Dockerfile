@@ -41,6 +41,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN mkdir -p /run/php
 RUN sed -i 's/listen = \/run\/php\/php8.3-fpm.sock/listen = 9000/' /etc/php/8.3/fpm/pool.d/www.conf
 
-EXPOSE 9000
+# EXPOSE 9000
 
 CMD ["bash", "/entrypoint.sh"]

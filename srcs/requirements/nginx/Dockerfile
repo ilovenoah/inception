@@ -11,7 +11,7 @@ COPY entrypoint.sh /entrypoinst.sh
 #COPY ssl_certificate.key /etc/nginx/ssl/
 #
 #EXPOSE 443
-EXPOSE 80 
+# EXPOSE 80 
 #
 #CMD ["nginx", "-g", "daemon off;"]
 CMD ["bash", "/entrypoinst.sh"]
