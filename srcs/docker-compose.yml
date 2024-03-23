@@ -4,8 +4,8 @@ services:
     build: ./requirements/nginx
     volumes:
       - ./requirements/logs/nginx:/var/log/nginx
-    # ports:
-    #   - "80:80"
+    ports:
+      - ":80"
 
 
   wordpress:
@@ -13,5 +13,5 @@ services:
     build: ./requirements/wordpress
     # volumes:
     #   - ./requirements/wordpress:/var/www/html
-    # ports:
-    #   - "9090:9090"
+    ports:
+      - ":9090"
