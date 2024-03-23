@@ -5,8 +5,9 @@ services:
     volumes:
       - ./requirements/logs/nginx:/var/log/nginx
     ports:
-      - ":80"
-
+      - "80:80"
+    networks:
+      - inception_network
 
   wordpress:
     container_name: wordpress
@@ -15,3 +16,20 @@ services:
     #   - ./requirements/wordpress:/var/www/html
     ports:
       - ":9090"
+    networks:
+      - inception_network
+    env_file:
+      - .env
+  
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/wordpress
+    ports:
+      - ":9090"
+    networks:
+      - inception_network
+    env_file:
+      - .env
+
+networks:
+  wordpress_network:

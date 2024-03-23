@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /entrypoinst.sh
+RUN chmod +x /entrypoint.sh
 
 #COPY ssl_certificate.crt /etc/nginx/ssl/
 #COPY ssl_certificate.key /etc/nginx/ssl/
