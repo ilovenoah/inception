@@ -3,33 +3,45 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     volumes:
-      - ./requirements/logs/nginx:/var/log/nginx
+      - wordpress_data:/var/www/html:ro
     ports:
       - "80:80"
     networks:
-      - inception_network
+      - docker_network
+    depends_on:
+      - wordpress
 
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
-    # volumes:
-    #   - ./requirements/wordpress:/var/www/html
     ports:
-      - ":9090"
+      - 9000
     networks:
-      - inception_network
+      - docker_network
     env_file:
-      - .env
+      - ../.env
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_data:/var/www/html/
   
   mariadb:
     container_name: mariadb
-    build: ./requirements/wordpress
+    build: ./requirements/mariadb
     ports:
-      - ":9090"
+      - 3306
     networks:
-      - inception_network
+      - docker_network
     env_file:
-      - .env
+      - ../.env
+    volumes:
+      - mariadb_data:/var/lib/mysql
 
 networks:
-  wordpress_network:
+  docker_network:
+
+volumes:
+  wordpress_data:
+    name: wordpress_data
+  mariadb_data:
+    name: mariadb_data
