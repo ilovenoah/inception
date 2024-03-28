@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # check env variables
-if [ -z "$MYSQL_ROOT_PASSWORD" -o -z "$MYSQL_DATABASE" -o -z "$MYSQL_USER" -o -z "$MYSQL_PASSWORD" ]; then
+if [ -z "$MYSQL_ROOT_PASSWORD" -o -z "$WORDPRESS_DB_NAME" -o -z "$WORDPRESS_DB_USER" -o -z "$WORDPRESS_DB_PASSWORD" ]; then
   echo "Error: Missing required environment variables."
   exit 1
 fi
@@ -30,8 +30,8 @@ fi
 
 # create database and user
 echo "Creating database and user..."
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`;"
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL ON \`$MYSQL_DATABASE\`.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`$WORDPRESS_DB_NAME\`;"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL ON \`$WORDPRESS_DB_NAME\`.* TO '$WORDPRESS_DB_USER'@'%' IDENTIFIED BY '$WORDPRESS_DB_PASSWORD';"
 
 # create WordPress database
 echo "Creating WordPress database..."

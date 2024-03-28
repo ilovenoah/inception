@@ -7,4 +7,9 @@ sed -i "s/WORDPRESS_DB_USER/$WORDPRESS_DB_USER/g" /var/www/html/wordpress/wp-con
 sed -i "s/WORDPRESS_DB_PASSWORD/$WORDPRESS_DB_PASSWORD/g" /var/www/html/wordpress/wp-config.php
 sed -i "s/WORDPRESS_DB_HOST/$WORDPRESS_DB_HOST/g" /var/www/html/wordpress/wp-config.php
 
+cd /var/www/html/wordpress
+if ! $(wp core is-installed --allow-root); then
+  wp core install --url=${DOMAIN_NAME} --title=${WORDPRESS_TITLE} --admin_user=${WORDPRESS_DB_USER} --admin_password=${WORDPRESS_DB_PASSWORD} --admin_email=${WORDPRESS_EMAIL} --allow-root
+fi
+
 /usr/sbin/php-fpm8.3 -F
