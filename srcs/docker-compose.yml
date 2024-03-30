@@ -37,14 +37,12 @@ services:
       - .env
     volumes:
       - mariadb_data:/var/lib/mysql
-    # environment:
-    #   - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
-      interval: 30s
+      interval: 5s
       timeout: 5s
       retries: 6
-      start_period: 30s
+      start_period: 5s
 
 networks:
   docker_network:
