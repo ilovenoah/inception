@@ -10,6 +10,8 @@ services:
       - docker_network
     depends_on:
       - wordpress
+    env_file:
+      - .env
 
   wordpress:
     container_name: wordpress
