@@ -12,4 +12,4 @@ up:
 ps:
 	docker compose -f $(COMPOSE_FILE) ps
 build:
-	docker compose -f $(COMPOSE_FILE) build 
+	docker compose -f $(COMPOSE_FILE) build
