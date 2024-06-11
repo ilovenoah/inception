@@ -12,6 +12,8 @@ services:
       - wordpress
     env_file:
       - .env
+    imgae: rmatsuok_nginx
+    restart: always
 
   wordpress:
     container_name: wordpress
@@ -27,6 +29,8 @@ services:
         condition: service_healthy
     volumes:
       - wordpress_data:/var/www/html
+    image: rmatsuok_wordpress
+    restart: always
   
   mariadb:
     container_name: mariadb
@@ -45,6 +49,8 @@ services:
       timeout: 5s
       retries: 6
       start_period: 5s
+    image: rmatsuok_mariadb
+    restart: always
 
 networks:
   docker_network:
