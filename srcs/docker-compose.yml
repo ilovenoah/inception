@@ -2,6 +2,9 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
+    args:
+      - SSL_CERT_PATH=${SSL_CERT_PATH}
+      - SSL_KEY_PATH=${SSL_KEY_PATH}
     volumes:
       - wordpress_data:/var/www/html:ro
     ports:
