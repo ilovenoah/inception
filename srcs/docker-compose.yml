@@ -1,14 +1,15 @@
 services:
   nginx:
     container_name: nginx
-    build: ./requirements/nginx
-    args:
-      - SSL_CERT_PATH=${SSL_CERT_PATH}
-      - SSL_KEY_PATH=${SSL_KEY_PATH}
+    build:
+      context: ./requirements/nginx
+      args:
+        - SSL_CERT_PATH=${SSL_CERT_PATH}
+        - SSL_KEY_PATH=${SSL_KEY_PATH}
     volumes:
       - wordpress_data:/var/www/html:ro
     ports:
-      - "80:80"
+      - "443:443"
     networks:
       - docker_network
     depends_on:
