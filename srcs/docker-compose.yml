@@ -12,7 +12,7 @@ services:
       - wordpress
     env_file:
       - .env
-    imgae: rmatsuok_nginx
+    image: rmatsuok_nginx
     restart: always
 
   wordpress:
