@@ -1,4 +1,4 @@
-.PHONY: setup up d b ps
+.PHONY: setup up down build ps
 
 COMPOSE_FILE := srcs/docker-compose.yml
 
