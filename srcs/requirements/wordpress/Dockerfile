@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	gettext-base \
 	mlocate \
+	procps \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/apt/keyrings
