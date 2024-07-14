@@ -8,4 +8,4 @@ fi
 
 sed -i "s/DOMAIN_NAME/${DOMAIN_NAME}/g" /etc/nginx/conf.d/default.conf
 
-nginx -g "daemon off;"
+exec nginx -g "daemon off;"

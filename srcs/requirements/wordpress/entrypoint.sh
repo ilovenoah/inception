@@ -14,4 +14,4 @@ if ! $(wp core is-installed --allow-root); then
   wp core install --url=${DOMAIN_NAME} --title=${WORDPRESS_TITLE} --admin_user=${WORDPRESS_DB_USER} --admin_password=${WORDPRESS_DB_PASSWORD} --admin_email=${WORDPRESS_EMAIL} --allow-root
 fi
 
-/usr/sbin/php-fpm8.3 -F
+exec /usr/sbin/php-fpm8.3 -F
