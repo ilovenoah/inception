@@ -8,8 +8,8 @@ sed -i "s/WORDPRESS_DB_PASSWORD/$WORDPRESS_DB_PASSWORD/g" /var/www/html/wordpres
 sed -i "s/WORDPRESS_DB_HOST/$WORDPRESS_DB_HOST/g" /var/www/html/wordpress/wp-config.php
 
 cd /var/www/html/wordpress
-wp option update home "http://${DOMAIN_NAME}" --allow-root
-wp option update siteurl "http://${DOMAIN_NAME}" --allow-root
+wp option update home "https://${DOMAIN_NAME}" --allow-root
+wp option update siteurl "https://${DOMAIN_NAME}" --allow-root
 if ! $(wp core is-installed --allow-root); then
   wp core install --url=${DOMAIN_NAME} --title=${WORDPRESS_TITLE} --admin_user=${WORDPRESS_DB_USER} --admin_password=${WORDPRESS_DB_PASSWORD} --admin_email=${WORDPRESS_EMAIL} --allow-root
   wp user create ${WORDPRESS_SECOND_USER} ${WORDPRESS_SECOND_USER_EMAIL} --role=author --user_pass=${WORDPRESS_SECOND_USER_PASSWORD} --allow-root
